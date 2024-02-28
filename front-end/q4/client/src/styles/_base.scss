@@ -1,0 +1,37 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: $text-color-primary;
+  background-color: $background-color-primary;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  color: $color-primary;
+  text-align: center;
+}
+
+a,
+a:visited {
+  color: $color-primary;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  background-color: $color-primary;
+  border-radius: $border-radius-button;
+  border: none;
+  padding: $spacing-button;
+
+  &:active {
+    background-color: darken($color: $color-primary, $amount: 20%);
+  }
+}
