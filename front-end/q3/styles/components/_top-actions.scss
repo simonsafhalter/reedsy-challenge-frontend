@@ -1,0 +1,34 @@
+.top-actions {
+  margin: 0 $dyn-spacing-large;
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    margin: $spacing-container-large;
+
+    @include mobile-flex-column();
+  }
+
+  .top-logo {
+    background-color: $color-secondary;
+    padding-left: 50px;
+    padding-right: 50px;
+
+    @include mobile-only {
+      margin-bottom: $spacing-container-large;
+    }
+  }
+
+  .top-menu {
+    ul {
+      display: flex;
+    }
+
+    li {
+      &.active {
+        color: $text-color-secondary;
+        background-color: $color-primary;
+      }
+    }
+  }
+}

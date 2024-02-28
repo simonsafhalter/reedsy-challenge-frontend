@@ -1,0 +1,12 @@
+// Variables and Mixins
+@import "variables";
+@import "mixins";
+
+// Base styles
+@import "base";
+@import "reset";
+
+// Component-specific styles
+@import "components/top-actions";
+@import "components/main";
+@import "components/footer";
