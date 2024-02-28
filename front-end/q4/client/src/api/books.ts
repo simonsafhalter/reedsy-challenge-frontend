@@ -1,6 +1,15 @@
 import axios from "axios";
+import { Book } from "../types/Book";
+import { addRankToBooks } from "../utils/data-parsing";
 
 const BASE_URL = "http://localhost:3000/books";
+
+type BooksResponse = {
+  books: Book[];
+  meta: {
+    count: number;
+  };
+};
 
 /**
  * Fetches all books from the API.
@@ -9,8 +18,11 @@ const BASE_URL = "http://localhost:3000/books";
  */
 export async function getAllBooks(): Promise<Book[] | string> {
   try {
-    const response = await axios.get<Book[]>(`${BASE_URL}`);
-    return response.data;
+    const response = await axios.get<BooksResponse>(`${BASE_URL}`);
+    return {
+      books: addRankToBooks(response.data.books),
+      meta: response.data.meta,
+    };
   } catch (error) {
     if (axios.isAxiosError(error)) {
       console.error("Error fetching all books:", error.message);

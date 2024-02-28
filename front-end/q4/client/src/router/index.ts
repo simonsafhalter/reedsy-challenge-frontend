@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from "vue-router";
-import BookDetails from "../components/BookDetails.vue";
+import BookDetails from "../components/BookDetails/BookDetails.vue";
 import BookList from "../components/BookList.vue";
 
 const routes = [

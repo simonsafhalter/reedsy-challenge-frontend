@@ -3,7 +3,6 @@
   line-height: 1.5;
   font-weight: 400;
 
-  color-scheme: light dark;
   color: $text-color-primary;
   background-color: $background-color-primary;
 
@@ -13,9 +12,18 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body {
+  padding: 0 25%;
+
+  @media (max-width: $screen-width-mobile) {
+    padding: 0;
+  }
+}
+
 h1 {
   color: $color-primary;
   text-align: center;
+  margin-bottom: 10px;
 }
 
 a,
@@ -26,12 +34,34 @@ a:visited {
 
 button {
   cursor: pointer;
+  color: $text-color-secondary;
   background-color: $color-primary;
   border-radius: $border-radius-button;
-  border: none;
+  border: solid 2px $color-primary;
   padding: $spacing-button;
+  font-weight: bold;
 
   &:active {
     background-color: darken($color: $color-primary, $amount: 20%);
   }
+
+  &.selected {
+    color: $color-primary;
+    background-color: $background-color-secondary;
+
+    &:active {
+      background-color: darken(
+        $color: $background-color-secondary,
+        $amount: 20%
+      );
+    }
+  }
+}
+
+textarea {
+  font-family: inherit;
+  resize: none;
+  width: 100%;
+  padding: 10px;
+  border-color: $color-primary;
 }
