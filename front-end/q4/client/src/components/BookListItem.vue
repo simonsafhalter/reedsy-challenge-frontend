@@ -16,7 +16,12 @@
       </div>
     </div>
     <router-link :to="`/book/${book.slug}`">
-      <img :src="book.cover" :alt="book.title" class="book-cover" />
+      <img
+        data-cy="book-cover-link"
+        class="book-cover"
+        :src="book.cover"
+        :alt="book.title"
+      />
     </router-link>
   </div>
 </template>
@@ -25,46 +30,45 @@
 import { defineProps } from "vue";
 import type { Book } from "../types/Book";
 
-// Define props
+/**
+ * Component that handles the rendering of the single book item in the list.
+ */
 const props = defineProps<{
   book: Book;
   index: Number;
 }>();
 
-/**
- * Truncates text to a specified length (default 200 characters)
- */
 function truncate(text, length = 200) {
   return text.length > length ? text.substring(0, length) + "..." : text;
 }
 </script>
 
 <style lang="scss" scoped>
-@import "../styles/mixins.scss";
+@import "@/styles/mixins.scss";
 
 .book-item {
   display: flex;
-  padding: $spacing-container-large;
+  padding: $spacing-large;
 
   @include mobile-flex-column();
 
   .title {
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: $spacing-medium;
 
     h2 {
-      margin-right: 10px;
+      margin-right: $spacing-medium;
     }
   }
 
   .details {
-    padding-right: 10px;
+    padding-right: $spacing-medium;
   }
 
   .author {
     font-style: italic;
-    margin-bottom: 15px;
+    margin-bottom: $spacing-large;
   }
 
   .book-cover {
@@ -73,7 +77,7 @@ function truncate(text, length = 200) {
   }
 
   .synopsis {
-    margin-bottom: 15px;
+    margin-bottom: $spacing-large;
   }
 
   .upvotes {
@@ -81,7 +85,7 @@ function truncate(text, length = 200) {
     align-items: center;
 
     button {
-      margin-right: 10px;
+      margin-right: $spacing-medium;
     }
   }
 }

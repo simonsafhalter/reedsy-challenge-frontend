@@ -1,6 +1,6 @@
 <template>
-  <div class="comments">
-    <div class="post-comment">
+  <div class="book-comments">
+    <div class="post-comment" data-cy="post-comment">
       <textarea
         v-model="newComment"
         placeholder="Leave a comment..."
@@ -11,8 +11,7 @@
     <span v-if="comments.length === 0">No comments</span>
     <ul v-else>
       <li v-for="comment in comments" :key="comment.id">
-        <span>{{ formatDate(comment.createdAt) }}</span>
-        <p>{{ comment.content }}</p>
+        <BookComment :comment="comment" />
       </li>
     </ul>
   </div>
@@ -20,14 +19,16 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
-import { format } from "date-fns";
-import { fetchComments, postComment } from "../../api/comments";
-import { Comment } from "../../types/Comment";
+import { fetchComments, postComment } from "@/api/comments";
+import { Comment } from "@/types/Comment";
+import BookComment from "@/components/BookComment.vue";
 
+/**
+ * Component that handles the comment list and adding new comments.
+ */
 const comments = ref<Comment[]>([]);
 const newComment = ref("");
 
-// Define props
 const props = defineProps<{
   slug: string;
 }>();
@@ -40,14 +41,18 @@ async function addComment() {
   if (newComment.value?.length && newComment.value.trim()) {
     const posted = await postComment(props.slug, newComment.value);
 
-    comments.value.push(posted);
+    comments.value.splice(0, 0, posted);
     // Reset the input field
     newComment.value = "";
   }
 }
-
-function formatDate(date: Date | string): string {
-  const dateObj = typeof date === "string" ? new Date(date) : date;
-  return format(dateObj, "yyyy-MM-dd HH:mm:ss");
-}
 </script>
+
+<style lang="scss" scoped>
+.book-comments {
+  .post-comment,
+  h2 {
+    margin-bottom: $spacing-large;
+  }
+}
+</style>

@@ -1,4 +1,4 @@
-import { Book } from "../types/Book";
+import { Book } from "@/types/Book";
 
 export function addRankToBooks(books: Book[]): Book[] {
   return books.map((book, index) => ({

@@ -2,7 +2,9 @@ import axios from "axios";
 import { Book } from "../types/Book";
 import { addRankToBooks } from "../utils/data-parsing";
 
-const BASE_URL = "http://localhost:3000/books";
+// Using 127.0.0.1 instead of localhost to be able to test with Cypress.
+// A known unresolved issue (https://github.com/cypress-io/cypress/issues/26154)
+const BASE_URL = "http://127.0.0.1:3000/books";
 
 type BooksResponse = {
   books: Book[];

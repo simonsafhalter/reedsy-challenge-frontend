@@ -1,10 +1,12 @@
 import { createRouter, createWebHistory } from "vue-router";
-import BookDetails from "../components/BookDetails/BookDetails.vue";
-import BookList from "../components/BookList.vue";
+import BookDetailsPage from "./BookDetailsPage.vue";
+import BookListPage from "./BookListPage.vue";
 
 const routes = [
-  { path: "/", component: BookList },
-  { path: "/book/:slug", component: BookDetails },
+  { path: "/", component: BookListPage },
+  { path: "/book/:slug", component: BookDetailsPage },
+  // Catch-all redirects to root
+  { path: "/:pathMatch(.*)*", redirect: "/" },
 ];
 
 const router = createRouter({

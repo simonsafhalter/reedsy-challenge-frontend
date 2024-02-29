@@ -32,8 +32,8 @@ export function postComment(key: string, newCommentContent: string): Comment {
   };
 
   // Add the new comment to the array and save it back to localStorage
-  comments.push(newComment);
-  localStorage.setItem(key, JSON.stringify(comments));
+  const newComments = [newComment, ...comments];
+  localStorage.setItem(key, JSON.stringify(newComments));
 
   return newComment;
 }

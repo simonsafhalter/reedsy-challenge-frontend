@@ -2,6 +2,7 @@
   <div class="book-list">
     <h1>Top books of all time</h1>
     <input
+      data-cy="search-book-input"
       class="search-input"
       type="text"
       v-model="searchQuery"
@@ -16,13 +17,14 @@
       </button>
       <span>Page {{ currentPage }} of {{ totalPages }}</span>
       <button
+        data-cy="next-page"
         @click="currentPage = Math.min(currentPage + 1, totalPages)"
         :disabled="currentPage >= totalPages"
       >
         &gt;
       </button>
     </div>
-    <ul>
+    <ul data-cy="book-list">
       <li v-for="book in paginatedBooks" :key="book.slug">
         <BookListItem :book="book" />
       </li>
@@ -31,27 +33,23 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from "vue";
-import { getAllBooks } from "../api/books";
+import { computed, ref, watch } from "vue";
 import BookListItem from "./BookListItem.vue";
-import type { Book } from "../types/Book";
+import type { Book } from "@/types/Book";
 
-const books = ref<Book[]>([]);
+/**
+ * Component that handles the paginated book list with the search filtering.
+ */
+const props = defineProps({
+  books: Array as () => Book[],
+});
+
 const searchQuery = ref("");
 const currentPage = ref(1);
 const itemsPerPage = ref(3);
 
-onMounted(async () => {
-  const response: Book[] = await getAllBooks();
-  if (Array.isArray(response.books)) {
-    books.value = response.books;
-  } else {
-    console.error(response);
-  }
-});
-
 const filteredBooks = computed(() => {
-  return books.value.filter((book: Book) => {
+  return props.books.filter((book: Book) => {
     return (
       book.title.toLowerCase().includes(searchQuery.value.toLowerCase()) ||
       book.synopsis.toLowerCase().includes(searchQuery.value.toLowerCase())
@@ -69,7 +67,6 @@ const totalPages = computed(() => {
   return Math.ceil(filteredBooks.value.length / itemsPerPage.value);
 });
 
-// Reset to the first page on search query change
 watch(searchQuery, () => {
   currentPage.value = 1;
 });

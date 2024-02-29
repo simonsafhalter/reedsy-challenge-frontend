@@ -1,5 +1,5 @@
 <template>
-  <div v-if="book" class="book-details">
+  <div class="book-details">
     <div class="header">
       <h1>{{ book.title }}</h1>
       <div class="upvotes">
@@ -18,33 +18,18 @@
 
     <BookComments :slug="book.slug" />
   </div>
-  <p v-else>{{ state }}</p>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import { format } from "date-fns";
-import { getBookBySlug } from "../../api/books";
-import type { Book } from "../../types/Book";
-import BookComments from "./BookComments.vue";
+import { defineProps } from "vue";
+import type { Book } from "@/types/Book";
+import BookComments from "@/components/BookComments.vue";
 
-const route = useRoute();
-const book = ref<Book | null>(null);
-const state = ref<string>("Loading");
-
-onMounted(async () => {
-  const slug = route.params.slug;
-  if (typeof slug === "string") {
-    // Fetch the book
-    const response: Book | string = await getBookBySlug(slug);
-
-    if (response?.slug) {
-      book.value = response;
-    } else {
-      state.value = "Book not found";
-    }
-  }
+/**
+ * Component that handles the rendering of the book details.
+ */
+const props = defineProps({
+  book: Object as () => Book,
 });
 </script>
 
@@ -53,7 +38,7 @@ onMounted(async () => {
   background-color: $background-color-secondary;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3);
   min-height: 100vh;
-  padding: $spacing-container-large;
+  padding: $spacing-large;
 
   .header {
     display: flex;
@@ -64,29 +49,30 @@ onMounted(async () => {
   .author {
     font-style: italic;
   }
+
   .image-wrapper {
     text-align: center;
-    margin: $spacing-container-medium 0;
+    margin: $spacing-medium 0;
   }
+
   img {
     max-width: 400px;
     height: auto;
   }
 
   .synopsis {
-    margin-bottom: $spacing-container-large;
+    margin-bottom: $spacing-large;
   }
+
   .rating {
     font-weight: bold;
+    margin-bottom: $spacing-large;
   }
 
   .upvotes {
     span {
-      margin-right: 10px;
+      margin-right: $spacing-medium;
     }
-  }
-
-  .comments {
   }
 }
 </style>
