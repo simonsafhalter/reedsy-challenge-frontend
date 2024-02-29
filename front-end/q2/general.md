@@ -1,6 +1,6 @@
 # 2.1 What kind of front end projects do you enjoy working on? Why?
 
-My ideal front end project is working on something I haven't worked with before with a team of really nice and smart people. I'm not stuck in any specific technologies as long as it's fairly modern. I enjoy working on projects with an interesting problem where the solution is not straight forward which allows me to research and learn and use my creativity to find - ideally - simple solutions. I would say the most satisfying projects I've been part of was because of the people I worked with.
+I enjoy working on front end projects that include something I haven't worked with before with a team of really nice and smart people. I enjoy collaborating with people with diverse knowledge where everyone can contribute. I'm not stuck in any specific technology as long as it's relatively modern. Projects with an interesting problem where the solution is not straight forward which allows me to research and learn and use my creativity to find - ideally - simple solutions. I would say the most satisfying projects I've been part of was because of the people I worked with.
 
 # 2.2 Which are your favorite features of HTML5? How have you used them before?
 
@@ -14,7 +14,7 @@ A project where I used Web Workers was when we had to make certain features of t
 
 Creating a DOM with "innerHTML" is setting a string which is then parsed and inserted as the HTML code of the element. It might seem very simple and convenient but it's usually not advisable because the sting parsing can be dangerous. If the string is not sanitized it can contain malicious code that can be executed.
 
-The "createElement method creates a new instance of a DOM element that we can then manipulate (e.g., set attributes, append children) and insert into the document. Using document.createElement is preferred when programmatically creating and manipulating elements because it's more secure as it doesn't require parsing HTML strings and allows more controlled attribute assignment, event listener attachment, and appending child elements.
+The "createElement" method creates a new instance of a DOM element that we can then manipulate (e.g., set attributes, append children) and insert into the document. Using document.createElement is preferred when programmatically creating and manipulating elements because it's more secure as it doesn't require parsing HTML strings and allows more controlled attribute assignment, event listener attachment, and appending child elements.
 
 # 2.4 Compare two-way data binding vs one-way data flow.
 

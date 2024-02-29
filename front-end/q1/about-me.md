@@ -21,6 +21,8 @@ The project gives the agencies:
 - [Jest](https://jestjs.io/) for unit testing
 - [Cypress](https://www.cypress.io/) for E2E testing
 
+The project was set up as a Single Page Vue.js Application backed by various REST APIs accross the company. Auth APIs for authentication, ElasticSearch APIs for customer search and event logs, Google Analytics APIs for analytics, WebSockets for real-time data, various custom synchronous and asynchronous APIs for other features like refunds, ticket management, etc.
+
 ## :smile: My role
 
 My initial role was an individual contributor, working in a team of 3 FE developers, 2 BE developers and 1 QA where I developed and extended many of the above features.
