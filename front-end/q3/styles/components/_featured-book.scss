@@ -1,0 +1,32 @@
+.main {
+  .featured-book {
+    display: flex;
+    position: relative;
+    background-color: $background-color-primary;
+    padding: $spacing-container-large;
+
+    @include mobile-flex-column();
+
+    img {
+      max-height: 350px;
+
+      @include mobile-only {
+        margin-bottom: $spacing-container-large;
+      }
+    }
+
+    .recommended {
+      color: $text-color-secondary;
+      background-color: $color-primary;
+      position: absolute;
+      top: 0;
+      right: 0;
+      border-bottom-left-radius: $border-radius-button;
+      padding: 5px;
+    }
+
+    .book-info {
+      margin-left: $spacing-container-large;
+    }
+  }
+}
