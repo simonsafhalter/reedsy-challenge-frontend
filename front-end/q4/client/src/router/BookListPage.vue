@@ -1,6 +1,6 @@
 <template>
   <div>
-    <BookList v-if="books" :books="books" />
+    <BookList v-if="books.length > 0" :books="books" />
     <p v-else>{{ state }}</p>
   </div>
 </template>

@@ -21,4 +21,14 @@ describe("addRankToBooks", () => {
       { title: "Book 3", author: "Author 3", rank: 3 },
     ]);
   });
+
+  it("returns an empty array if provided an empty array", () => {
+    // Assert
+    expect(addRankToBooks([])).toEqual([]);
+  });
+
+  it("returns an empty array if param not provided", () => {
+    // Assert
+    expect(addRankToBooks()).toEqual([]);
+  });
 });

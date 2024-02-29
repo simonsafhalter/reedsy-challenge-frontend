@@ -38,7 +38,7 @@ const props = defineProps<{
   index: Number;
 }>();
 
-function truncate(text, length = 200) {
+function truncate(text = "", length = 200) {
   return text.length > length ? text.substring(0, length) + "..." : text;
 }
 </script>
