@@ -1,6 +1,11 @@
 # Top books of all time
 
-An app that allows to browse through a list of books. A user can select a book and see more details and add comments.
+## :joystick: Features
+
+- **Book list**: Browse through a list of books.
+- **Book search**: Search for words in the book title and synopsis.
+- **Book details**: Select the book from the list to view more details.
+- **Comment**: Leave comments on the book details page.
 
 ## :computer: Tech stack
 
